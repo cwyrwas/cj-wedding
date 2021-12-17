@@ -4,6 +4,8 @@ use App\Models\Gift;
 use App\Models\Guest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\ReservationController;
 
 /*
@@ -36,5 +38,17 @@ Route::get('/rsvp', [ReservationController::class, 'index']);
 Route::post('/rsvp', [ReservationController::class, 'reserve']);
 
 Route::get('/rsvp/thank-you', function() {
+    // TODO: Redirect if this is accessed directly.
     return view('thank-you');
+});
+
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
+
+Route::get('/test', function() {
+    return view('test');
 });
