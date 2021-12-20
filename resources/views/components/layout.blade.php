@@ -12,8 +12,27 @@
 </head>
 <body class="antialised bg-cj-blue">
     <div id="app">
+        <div 
+        class="relative 
+        flex 
+        items-top 
+        mx-auto 
+        flex-col  
+        sm:items-center 
+        py-4 
+        bg-cj-cream 
+        max-w-7xl 
+        sm:pt-0"
+        >
+        @include('header')
         {{ $content }}
+        </div>
     </div>
+    @if( session()->has('message') )
+        <div class="fixed bottom-3 right-3 mb-4 mr-4 p-4 bg-cj-orange text-white rounded-xl shadow text-sm">
+            <p>{{ session()->get('message') }}</p>
+        </div>
+    @endif
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
