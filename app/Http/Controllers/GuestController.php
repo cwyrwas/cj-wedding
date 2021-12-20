@@ -22,4 +22,22 @@ class GuestController extends Controller
             'guest' => $guest
         ]);
     }
+
+    public function create()
+    {
+        return view('guests.create');
+    }
+
+    public function store()
+    {
+        $attributes = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+        ]);
+
+        $guest = Guest::create($attributes);
+
+        return back()->with('success', $guest->name . ' has been successfully added!');
+    }
 }

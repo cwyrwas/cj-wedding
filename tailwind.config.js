@@ -14,7 +14,8 @@ module.exports = {
         'cj-blue': '#152238',
         'cj-peach': '#FFD6D1',
         'cj-orange': '#f0b57a',
-        'cj-cream': '#faf2e4'
+        'cj-cream': '#faf2e4',
+        'bg-semi-75': 'rgba(0, 0, 0, 0.75)'
       }
     }
   },

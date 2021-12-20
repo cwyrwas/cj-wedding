@@ -18,7 +18,7 @@
         rounded-md 
         shadow">
             <h1 class="text-4xl">{{ $gift->gift_type }}</h1>
-            <p class="text-2xl pt-4 text-gray-700">Guest name: {{ $gift->guest->name }}.</p>
+            <p class="text-2xl pt-4 text-gray-700">Guest name: <a href="/guests/{{$gift->guest_id}}" class="text-cj-blue underline">{{ $gift->guest->name }}</a>.</p>
         </div>
     </x-slot>
 </x-layout>

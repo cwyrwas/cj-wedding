@@ -4,8 +4,7 @@ use App\Models\Gift;
 use App\Models\Guest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReservationController;
 
 /*
@@ -27,28 +26,28 @@ Route::get('/', function () {
 Route::get('/guests', [GuestController::class, 'index']);
 
 Route::get('/guests/{guest}', [GuestController::class, 'show']);
+Route::post('/guests/{guest}/comments', [CommentController::class, 'store']);
 
-Route::get('/gifts/{gift}', function(Gift $gift) {
+Route::get('/guests/{guest}/gifts/{gift}', function(Guest $guest, Gift $gift) {
     return view('single-gift', [
         'gift' => $gift
     ]);
 });
 
 Route::get('/rsvp', [ReservationController::class, 'index']);
-Route::post('/rsvp', [ReservationController::class, 'reserve']);
+Route::post('/rsvp', [ReservationController::class, 'update']);
 
 Route::get('/rsvp/thank-you', function() {
     // TODO: Redirect if this is accessed directly.
     return view('thank-you');
 });
 
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('admin/', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
-Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
+Route::get('/admin/guests/create', [GuestController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/admin/guests', [GuestController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/test', function() {
-    return view('test');
-});
+require __DIR__.'/auth.php';
+

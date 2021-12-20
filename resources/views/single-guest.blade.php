@@ -50,7 +50,7 @@
                             </td>
                             <td class="px-4 py-3 text-sm border">
                                 @if ( $guest->gift )
-                                    {{$guest->gift->gift_type}}
+                                    <a href="/guests/{{$guest->id}}/gifts/{{$guest->gift->id}}" class="text-cj-blue underline">{{$guest->gift->gift_type}}</a>
                                 @else
                                     No
                                 @endif
@@ -61,5 +61,13 @@
                 </div>
             </div>
           </section>
+          {{-- Make this dynamic and add a button to add a new comment then save them in the DB. This should get extracted into a Vue component --}}
+          <section class="flex flex-col space-y-4 w-8/12">
+            @include('guests._add-comment-form')
+            @foreach ( $guest->comment as $comment )
+                <x-guest-comment :comment="$comment" />            
+            @endforeach
+          </section>
+
     </x-slot>
 </x-layout>

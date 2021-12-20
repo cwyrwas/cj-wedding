@@ -19727,7 +19727,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_table_row_cell, null, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-          href: 'guests/' + guest.id,
+          href: '/guests/' + guest.id,
           "class": "text-cj-blue underline"
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(guest.name), 9
         /* TEXT, PROPS */
@@ -19937,11 +19937,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_TableHeadCell_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/TableHeadCell.vue */ "./resources/js/components/TableHeadCell.vue");
 /* harmony import */ var _components_TableRowCell_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/TableRowCell.vue */ "./resources/js/components/TableRowCell.vue");
 /* harmony import */ var _components_Table_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Table.vue */ "./resources/js/components/Table.vue");
-/* harmony import */ var _components_Link_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Link.vue */ "./resources/js/components/Link.vue");
-/* harmony import */ var _components_Submit_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Submit.vue */ "./resources/js/components/Submit.vue");
-/* harmony import */ var _components_forms_Input_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/forms/Input.vue */ "./resources/js/components/forms/Input.vue");
-/* harmony import */ var _components_forms_InvalidMessage_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/forms/InvalidMessage.vue */ "./resources/js/components/forms/InvalidMessage.vue");
-
+/* harmony import */ var _components_Submit_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Submit.vue */ "./resources/js/components/Submit.vue");
+/* harmony import */ var _components_forms_Input_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/forms/Input.vue */ "./resources/js/components/forms/Input.vue");
+/* harmony import */ var _components_forms_InvalidMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/forms/InvalidMessage.vue */ "./resources/js/components/forms/InvalidMessage.vue");
 
 
 
@@ -19953,10 +19951,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
-app.component('invalid-message', _components_forms_InvalidMessage_vue__WEBPACK_IMPORTED_MODULE_10__["default"]);
-app.component('fancy-input', _components_forms_Input_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
-app.component('submit-btn', _components_Submit_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
-app.component('link', _components_Link_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+app.component('invalid-message', _components_forms_InvalidMessage_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
+app.component('fancy-input', _components_forms_Input_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+app.component('submit-btn', _components_Submit_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 app.component('nav-item', _components_NavItem_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.component('nav-menu', _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 app.component('table-head-cell', _components_TableHeadCell_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);

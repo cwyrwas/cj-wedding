@@ -15,7 +15,7 @@ class CreateGiftsTable extends Migration
     {
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guest_id')->constrained();
+            $table->foreignId('guest_id');
             $table->string('gift_type');
             $table->timestamps();
         });

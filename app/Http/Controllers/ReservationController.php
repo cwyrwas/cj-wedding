@@ -12,7 +12,7 @@ class ReservationController extends Controller
         return view('rsvp');
     }
 
-    public function reserve() 
+    public function update() 
     {   
         $guest = Guest::where('email', 'like', '%' . request('email') . '%')->first();
         if ( count((array)$guest) > 0 ) {

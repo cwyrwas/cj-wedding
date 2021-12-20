@@ -5,7 +5,6 @@ import HeaderImage from './components/HeaderImage.vue';
 import TableHeadCell from './components/TableHeadCell.vue';
 import TableRowCell from './components/TableRowCell.vue';
 import Table from './components/Table.vue';
-import Link from './components/Link.vue';
 import Submit from './components/Submit.vue';
 import Input from './components/forms/Input.vue';
 import InvalidMessage from './components/forms/InvalidMessage.vue';
@@ -15,7 +14,6 @@ const app = createApp({});
 app.component('invalid-message', InvalidMessage);
 app.component('fancy-input', Input);
 app.component('submit-btn', Submit);
-app.component('link', Link);
 app.component('nav-item', NavItem)
 app.component('nav-menu', Navbar)
 app.component('table-head-cell', TableHeadCell)

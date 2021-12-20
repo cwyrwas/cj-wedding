@@ -17,8 +17,7 @@
         flex 
         items-top 
         mx-auto 
-        flex-col j
-        ustify-center 
+        flex-col  
         sm:items-center 
         py-4 
         bg-cj-cream 

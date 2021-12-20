@@ -31,7 +31,7 @@
                     <tbody class="bg-white">
                         <tr v-for="guest in guests" :key="guest.id">
                             <table-row-cell>
-                                <a :href="'guests/' + guest.id" class="text-cj-blue underline">{{ guest.name }}</a>
+                                <a :href="'/guests/' + guest.id" class="text-cj-blue underline">{{ guest.name }}</a>
                             </table-row-cell>
                             <table-row-cell>
                                 {{ guest.email }}
