@@ -22,9 +22,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Controller and method to trigger
-Route::get('/guests', [GuestController::class, 'index']);
-
 Route::get('/guests/{guest}', [GuestController::class, 'show']);
 Route::post('/guests/{guest}/comments', [CommentController::class, 'store']);
 
@@ -35,19 +32,30 @@ Route::get('/guests/{guest}/gifts/{gift}', function(Guest $guest, Gift $gift) {
 });
 
 Route::get('/rsvp', [ReservationController::class, 'index']);
-Route::post('/rsvp', [ReservationController::class, 'update']);
+//Route::post('/rsvp', [ReservationController::class, 'update']);
 
 Route::get('/rsvp/thank-you', function() {
     // TODO: Redirect if this is accessed directly.
     return view('thank-you');
 });
 
-Route::get('admin/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-Route::get('/admin/guests/create', [GuestController::class, 'create'])->middleware(['auth', 'admin']);
-Route::post('/admin/guests', [GuestController::class, 'store'])->middleware(['auth', 'admin']);
+// Authentication wall
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('admin/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('admin/guests', [GuestController::class, 'index'])->name('guests.index');
+    Route::post('admin/guests', [GuestController::class, 'store']);
+    Route::get('admin/guests/{guest}', [GuestController::class, 'show']);
+    Route::post('admin/guests/{guest}/comments', [CommentController::class, 'store']);
+    Route::get('admin/guests/create', [GuestController::class, 'create'])->name('guest.create');
+    Route::get('admin/guests/bulk-create', [GuestController::class, 'bulkCreate'])->name('guest.bulk-create');
+    Route::post('admin/guests/bulk-create', [GuestController::class, 'bulkStore']);
+    
+});
 
 require __DIR__.'/auth.php';
 
