@@ -5,9 +5,9 @@
 <div>
     <div class="mb-4">
         <h1 class="text-3xl text-center font-garamond">We're so excited you'll be joining us {{ $guest->name }}!</h1>
-        <p class="text-center">In order to accommidate our guests in the best way, we'll need a bit more info from you.</p>
+        <p class="text-center">In order to accommodate our guests in the best way, we'll need a bit more info from you.</p>
     </div>
-    <form action="#" wire:prevent='submit'>
+    <form action="#" wire:submit.prevent="submitGuest">
         <x-form.panel>
             <div x-data="{dietaryShowing: false}">
                 <div class="flex">  
@@ -52,7 +52,7 @@
                                 id="diet_restrictions" 
                                 type="text" 
                                 placeholder="E.g. Gluten Free, Vegetarian, etc." 
-                                wire:model="diet_restrictions">
+                                wire:model="diet">
                                 @error('diet_restrictions')
                                     <span class="text-xs italic text-red-500">{{ $message }}</span>
                                 @enderror
@@ -102,7 +102,8 @@
                             name="plus_one"
                             id="no_plus_one"
                             value="false"
-                            x-on:click="plusOneShowing = false">
+                            x-on:click="plusOneShowing = false"
+                            wire:model="plusOne">
                             <label class="inline-block text-gray-800 form-check-label" for="no_plus_one">No</label>
                           </div>
                     </div>
@@ -118,7 +119,7 @@
                             id="plus_one_name" 
                             type="text" 
                             placeholder="E.g. John Smith." 
-                            wire:model="plus_one_name">
+                            wire:model="plusOne">
                             @error('plus_one_name')
                                 <span class="text-xs italic text-red-500">{{ $message }}</span>
                             @enderror
@@ -162,6 +163,9 @@
                     <div class="p-4 mt-4 border border-cj-blue">
                         <h3 class="my-3">Please check off the family members who will be attending the wedding.</h3>
                         @foreach ($family as $familyMember)
+                            @if($familyMember->name === $guest->name)
+                                @continue
+                            @endif   
                             <div class="flex items-baseline gap-2">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="plus_one_name">
                                     {{ $familyMember->name }}
@@ -177,6 +181,13 @@
                     </div>
                 @endif
             </div>
+            <button type="submit" 
+            class=
+            "inline-flex items-baseline px-4 py-2 ml-2 text-white transition duration-150 rounded bg-cj-blue hover:bg-cj-orange"
+            >
+            <x-loading-spinner wire:loading class="mr-2" />
+            <span>Submit</span>
+            </button>
         </x-form.panel>
     </form>     
 </div>

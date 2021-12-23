@@ -1,6 +1,7 @@
 @props(['text' => 'Submit'])
 <button     
 type="submit"
-class="ml-2 bg-cj-blue uppercase font-bold text-white rounded px-4 py-2 transition duration-150 hover:bg-cj-orange">
+class="px-4 py-2 ml-2 font-bold text-white uppercase transition duration-150 rounded bg-cj-blue hover:bg-cj-orange"
+{{$attributes}}>
 {{$text}}
 </button>

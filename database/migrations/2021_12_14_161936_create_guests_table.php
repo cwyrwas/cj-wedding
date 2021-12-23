@@ -21,7 +21,8 @@ class CreateGuestsTable extends Migration
             $table->string('address');
             $table->timestamp('invitation_sent_at')->nullable();
             $table->boolean('is_attending')->default(false);
-            $table->boolean('is_vegetarian')->default(false);
+            $table->string('dietary_requirements')->nullable();
+            $table->string('allergies')->nullable();
             $table->string('plus_one_name')->nullable();
         });
     }
