@@ -14,10 +14,13 @@ class GuestFound extends Component
     public $diet;
     public $allergies;
     public $plusOne;
+    public $guestRegistered = false;
+
 
     protected $listeners = [
         'guestFound' => 'guestFound',
-        'registerFamily' => 'registerFamily'
+        'registerFamily' => 'registerFamily',
+        'guestRegistered' => 'guestRegistered'
     ];
 
     protected $rules = [
@@ -33,12 +36,24 @@ class GuestFound extends Component
         $this->render();
     }
 
+    public function render()
+    {
+        return view('livewire.guest.guest-found');
+    }
+
+    public function mount(Guest $guest)
+    {
+        $this->guest = $guest;
+    }
+
     public function registerFamily()
     {
-        $this->family = Guest::where('address', '=', $this->guest->address)
-                        ->where('is_attending', '=', false)
+        $this->family = Guest::where([
+                            'address', '=', $this->guest->address,
+                            'is_attending', '=', false
+                        ])
                         ->get();
-    }
+    }   
 
     public function submitGuest()
     {
@@ -51,10 +66,17 @@ class GuestFound extends Component
                 'allergies' => $this->allergies,
                 'is_attending' => true,
             ]);
-        
-        $this->submitFamily();
-        //$this->emit('guestRegistered');
-        dd('All done!');
+
+        $this->emitGuestRegistered();
+    }
+    
+    public function emitGuestRegistered()
+    {
+        $this->emit('guestRegistered');
+    }
+
+    public function guestRegistered() {
+        $this->guestRegistered = true;
     }
 
     private function submitFamily()
@@ -69,15 +91,5 @@ class GuestFound extends Component
         } else {
             return false;
         }
-    }
-
-    public function render()
-    {
-        return view('livewire.guest.guest-found');
-    }
-
-    public function mount(Guest $guest)
-    {
-        $this->guest = $guest;
     }
 }

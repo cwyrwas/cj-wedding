@@ -43,7 +43,7 @@ class GuestController extends Controller
     }
 
     public function bulkCreate()
-    {
+    {   
         return view('guests.bulk-create');
     }
 
@@ -66,7 +66,11 @@ class GuestController extends Controller
                 'has_plus_one' => $guest[8],
                 'is_vegetarian' => $guest[9],
             ];
-            Guest::create($attributes);
+            try {
+                Guest::create($attributes);
+            } catch (\Exception $e) {
+                return back()->with('error', $e->getMessage());
+            }
         }
         return back()->with('success',  count($guests) . ' guests have been successfully added!');
     }

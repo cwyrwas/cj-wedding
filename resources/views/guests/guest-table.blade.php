@@ -3,8 +3,9 @@
         <x-dashboard.header-title route="{{route('guests.index')}}" parent="Guest Management" page="View All" />
     </x-slot>
     <x-dashboard-body>
-        <section class="container mx-auto p-6 font-sans">
-            <x-add-guest-button path="guest.create" />
+        <section class="container p-6 mx-auto font-sans">
+            {{ count($guests) }} Guests found
+            <x-add-guest-button path="guests.create" />
             <div class="w-full overflow-x-auto">
                 @if ( count($guests) )
                     <x-guest-search />

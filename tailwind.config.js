@@ -16,6 +16,9 @@ module.exports = {
         'cj-orange': '#f0b57a',
         'cj-cream': '#faf2e4',
         'bg-semi-75': 'rgba(0, 0, 0, 0.75)'
+      },
+      backgroundImage: {
+        'flower-bg': "url('/images/flower-bg.jpg')"
       }
     }
   },

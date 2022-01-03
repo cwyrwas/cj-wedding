@@ -22,7 +22,7 @@
                         <x-submit-button style="width:100%">Add Guest</x-submit-button>
                     </div>
                     <div class="w-full flex justify-end">
-                        Need to bulk import? <a href="{{route('guest.bulk-create')}}" class="ml-2 text-cj-blue underline hover:text-blue-700 transition duration-100">Click here.</a> 
+                        Need to bulk import? <a href="google.com" class="ml-2 text-cj-blue underline hover:text-blue-700 transition duration-100">Click here.</a> 
                     </div>
 
                 </x-form.panel>

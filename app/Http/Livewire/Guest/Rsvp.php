@@ -10,12 +10,15 @@ class Rsvp extends Component
 {   
     public $email;
     public $guest;
-
+    public $guestRegistered = false;
     public $show = true;
     
     protected $rules = ['email' => 'required|email|exists:guests,email'];
 
-    protected $listeners = ['guestFound' => 'guestFound'];
+    protected $listeners = [
+        'guestFound' => 'guestFound',
+        'guestRegistered' => 'guestRegistered'
+    ];
 
     public function render()
     {
@@ -36,7 +39,17 @@ class Rsvp extends Component
     private function findGuest()
     {
         $this->guest = Guest::where('email', 'like', '%' . $this->email . '%')->first();
+
+        if ( $this->guest->is_attending ) {
+            $this->guestRegistered = true;
+        }
+        
         $this->emitGuestFound();
+    }
+
+    public function guestRegistered()
+    {
+        $this->guestRegistered = true;
     }
 
     public function renderForm()

@@ -5,11 +5,14 @@
 
     <x-dashboard-body>
         <x-form.panel-title>Import Guestlist from CSV</x-form.panel-title>
-        <div class="rounded-lg w-full mx-auto md:w-8/12">
-            <form action="{{route('guest.bulk-create')}}" method="post" enctype="multipart/form-data">
+        <div class="w-full mx-auto rounded-lg md:w-8/12">
+            <form action="{{route('guests.bulkCreate')}}" method="post" enctype="multipart/form-data">
                 <x-form.panel>
                     @csrf
                     <x-form.file-input name="guest_csv" label="CSV File" />
+                    @error('guest_csv')
+                        <x-invalid-message>{{$message}}</x-invalid-message>
+                    @enderror
                     <x-submit-button>Import Guests</x-submit-button>
                 </x-form.panel>
             </form>

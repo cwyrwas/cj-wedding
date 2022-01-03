@@ -12,12 +12,12 @@
     @livewireStyles
     <title>Christian and Jada | 10/29/22</title>
 </head>
-<body class="antialised bg-cj-blue">
+<body class="antialised">
     <div id="app">
+        <x-front-end-navigation.menu />
         <div 
-        class="relative flex flex-col py-4 mx-auto items-top sm:items-center bg-cj-cream sm:pt-0"
+        class="relative flex flex-col py-4 mx-auto items-top sm:items-center bg-gray-50 sm:pt-0"
         >
-        @include('header')
         {{ $content }}
         </div>
     </div>

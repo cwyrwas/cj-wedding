@@ -23,7 +23,11 @@
               
         </form>
     @else
-        @livewire('guest.guest-found', ['guest' => $guest])
+        @if(!$guestRegistered)
+            @livewire('guest.guest-found', ['guest' => $guest])
+        @else
+            @livewire('guest.thank-you', ['guest' => $guest])
+        @endif
     @endif
     
 
