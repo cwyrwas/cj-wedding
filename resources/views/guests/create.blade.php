@@ -1,15 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Guest Management') }}
-        </h2>
+        <x-dashboard.header-title route="{{route('guests.index')}}" parent="Guest Management" page="Add New" />
     </x-slot>
 
     <x-dashboard-body>
-        <h2 class="font-bold text-3xl uppercase font-garamond text-center mb-4">Add a guest</h2>
+        <x-form.panel-title>Add Guest</x-form.panel-title>
         <div class="rounded-lg w-full mx-auto md:w-8/12">
             <form action="/admin/guests" method="post">
-                <div class="px-6 pb-8 bg-gray-50 shadow-md rounded-lg flex flex-col space-y-4">
+                <x-form.panel>
                     @csrf
                     <x-form.fancy-input type="text" name="name" :value="old('name')" />
                     <x-form.fancy-input type="text" name="email" :value="old('email')" />
@@ -23,14 +21,16 @@
                     <div>
                         <x-submit-button style="width:100%">Add Guest</x-submit-button>
                     </div>
-                </div> 
+                    <div class="w-full flex justify-end">
+                        Need to bulk import? <a href="google.com" class="ml-2 text-cj-blue underline hover:text-blue-700 transition duration-100">Click here.</a> 
+                    </div>
+
+                </x-form.panel>
             </form>
         </div>
     </x-dashboard-body>
 
-    @if ( session()->has('success') )
-        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
-            {{session('success')}}
-        </div>
-    @endif
+    <x-form.success-message>
+        {{session('success')}}
+    </x-form.success-message>
 </x-app-layout>

@@ -1,3 +1,3 @@
-<p class="text-red-500 text-xs mt-2">
-    <slot />
+<p class="mt-2 text-xs text-red-500">
+    {{$slot}}
 </p>

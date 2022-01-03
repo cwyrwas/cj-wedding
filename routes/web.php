@@ -2,10 +2,13 @@
 
 use App\Models\Gift;
 use App\Models\Guest;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ReservationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,37 +20,39 @@ use App\Http\Controllers\ReservationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['dateDiff' => Carbon::parse('October 29, 2022')->longAbsoluteDiffForHumans(now()) ]
+    );
 });
 
-// Controller and method to trigger
-Route::get('/guests', [GuestController::class, 'index']);
+Route::get('/rsvp', [ReservationController::class, 'index'])
+    ->name('rsvp');
 
-Route::get('/guests/{guest}', [GuestController::class, 'show']);
-Route::post('/guests/{guest}/comments', [CommentController::class, 'store']);
+// Create a .ics calendar file for the guest.
+Route::get('/calendar', [CalendarController::class, 'index'])
+    ->name('calendar');
 
-Route::get('/guests/{guest}/gifts/{gift}', function(Guest $guest, Gift $gift) {
-    return view('single-gift', [
-        'gift' => $gift
-    ]);
+// Authentication wall
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('admin/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('admin/guests', [GuestController::class, 'index'])->name('guests.index');
+    Route::post('admin/guests', [GuestController::class, 'store']);
+
+    Route::get('admin/guests/{guest}', [GuestController::class, 'show']);
+    Route::post('admin/guests/{guest}/comments', [CommentController::class, 'store']);
+
+    Route::get('admin/guest/create', [GuestController::class, 'create'])->name('guests.create');
+
+    Route::get('admin/guest/bulk-create', [GuestController::class, 'bulkCreate'])->name('guests.bulkCreate');;
+    Route::post('admin/guest/bulk-create', [GuestController::class, 'bulkStore']);
+    
 });
 
-Route::get('/rsvp', [ReservationController::class, 'index']);
-Route::post('/rsvp', [ReservationController::class, 'update']);
 
-Route::get('/rsvp/thank-you', function() {
-    // TODO: Redirect if this is accessed directly.
-    return view('thank-you');
-});
-
-Route::get('admin/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/admin/guests/create', [GuestController::class, 'create'])->middleware(['auth', 'admin']);
-Route::post('/admin/guests', [GuestController::class, 'store'])->middleware(['auth', 'admin']);
 
 require __DIR__.'/auth.php';
 

@@ -19,8 +19,9 @@ class GuestFactory extends Factory
             'address' => $this->faker->address(),
             'invitation_sent_at' => now(),
             'is_attending' => $this->faker->boolean(), 
-            'has_plus_one' => $this->faker->boolean(),
-            'is_vegetarian' => $this->faker->boolean(),
+            'dietary_requirements' => $this->faker->sentence(),
+            'allergies' => $this->faker->sentence(),
+            'plus_one_name' => $this->faker->name(),
         ];
     }
 }

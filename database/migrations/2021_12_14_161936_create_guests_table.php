@@ -17,12 +17,13 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('address');
             $table->timestamp('invitation_sent_at')->nullable();
             $table->boolean('is_attending')->default(false);
-            $table->boolean('has_plus_one')->default(false);
-            $table->boolean('is_vegetarian')->default(false);
+            $table->string('dietary_requirements')->nullable();
+            $table->string('allergies')->nullable();
+            $table->string('plus_one_name')->nullable();
         });
     }
 

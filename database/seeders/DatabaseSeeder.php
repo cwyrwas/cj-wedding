@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Gift;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Gift::factory(35)->create();
+        Comment::factory(35)->create();
     }
 }
