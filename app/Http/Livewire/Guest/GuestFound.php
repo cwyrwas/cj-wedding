@@ -48,10 +48,8 @@ class GuestFound extends Component
 
     public function registerFamily()
     {
-        $this->family = Guest::where([
-                            'address', '=', $this->guest->address,
-                            'is_attending', '=', false
-                        ])
+        $this->family = Guest::where('address', '=', $this->guest->address)
+                        ->where('is_attending', '=', false)
                         ->get();
     }   
 

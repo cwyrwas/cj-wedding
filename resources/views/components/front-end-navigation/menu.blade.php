@@ -10,7 +10,7 @@
         <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row lg:pl-2">
             <x-front-end-navigation.item url="#" text="Our Story" class="{{ Request::is('/') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
             <x-front-end-navigation.item url="{{route('rsvp')}}" text="RSVP" class="{{ Request::is('rsvp') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
-            <x-front-end-navigation.item url="#" text="Schedule" class="{{ Request::is('schedule') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
+            <x-front-end-navigation.item url="{{route('schedule')}}" text="Schedule" class="{{ Request::is('schedule') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
             <x-front-end-navigation.item url="#" text="Venue" class="{{ Request::is('venue') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
             <x-front-end-navigation.item url="#" text="Registry" class="{{ Request::is('registry') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />
             <x-front-end-navigation.item url="#" text="Contact" class="{{ Request::is('contact') ? 'font-bold border-b-2 border-cj-blue' : '' }}" />

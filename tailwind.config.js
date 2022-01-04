@@ -18,7 +18,8 @@ module.exports = {
         'bg-semi-75': 'rgba(0, 0, 0, 0.75)'
       },
       backgroundImage: {
-        'flower-bg': "url('/images/flower-bg.jpg')"
+        'flower-bg': "url('/images/flower-bg.jpg')",
+        'table-bg': "url('/images/wedding-table.jpg')",
       }
     }
   },

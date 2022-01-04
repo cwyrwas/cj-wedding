@@ -22,7 +22,6 @@
         "vue-loader": "^17.0.0"
     },
     "dependencies": {
-        "vue": "^3.2.26",
         "vue-agile": "^2.0.0"
     }
 }

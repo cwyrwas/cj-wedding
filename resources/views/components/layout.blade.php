@@ -13,13 +13,14 @@
     <title>Christian and Jada | 10/29/22</title>
 </head>
 <body class="antialised">
-    <div id="app">
+    <div id="app" class="">
         <x-front-end-navigation.menu />
         <div 
-        class="relative flex flex-col py-4 mx-auto items-top sm:items-center bg-gray-50 sm:pt-0"
+        class="relative flex flex-col pt-4 mx-auto items-top sm:items-center bg-gray-50 sm:pt-0"
         >
         {{ $content }}
         </div>
+        <x-footer.main />
     </div>
     @if( session()->has('message') )
         <div class="fixed p-4 mb-4 mr-4 text-sm text-white shadow bottom-3 right-3 bg-cj-orange rounded-xl">
@@ -27,6 +28,7 @@
         </div>
     @endif
     
+
     @livewireScripts
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

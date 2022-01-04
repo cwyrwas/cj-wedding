@@ -1,5 +1,5 @@
 <main>
-    <div class="flex items-center justify-center w-full px-24 py-40 bg-center bg-no-repeat bg-cover bg-flower-bg">
+    <div class="flex items-center justify-center w-full px-24 py-40 bg-fixed bg-center bg-no-repeat bg-cover bg-flower-bg">
         <h1 class="text-5xl font-normal text-center text-white md:w-10/12 md:text-4xl lg:text-7xl">Christian & Jada are getting <span class="italic">married</span> in {{ $dateDiff }}!</h1>
     </div>
     <section id="body">
@@ -9,7 +9,6 @@
                 <aside>
                     <p class="text-xl font-light text-cj-peach">The ceremony (and reception!) will be held at <span class="font-light">Whispering Hollow Estate</span> in Alum Bank, PA.</p>
                 </aside>
-
             </div>
             <div class="flex flex-col items-center justify-center flex-1 w-full h-full px-6 py-24 space-y-3 text-center bg-white">
                 <h1 class="text-4xl text-cj-blue">We can't wait to celebrate the start of our lives with you.</h1>
@@ -19,18 +18,21 @@
             </div>
         </div>
     </section>
-    <section id="memories" class="px-6">
+    <section id="memories" class="px-6 pb-4 overflow-x-hidden">
         <div class="flex flex-col justify-center flex-1 w-full space-y-6">
-            <div>
-                <h1 class="px-6 mx-auto mt-6 text-3xl font-light text-center">
-                    After six beautiful years together, we will be starting the next chapter of our love story. 
+            <div class="px-6 text-center">
+                <h1 class="w-10/12 px-4 py-4 mx-auto mt-6 text-3xl font-light border border-cj-blue">
+                    After six wonderful years together, we will be starting the next chapter of our love story. 
                 </h1>
+                <p class="pt-4 text-xl">To celebrate all the memories that we've made - and the new ones to come - here are some snapshots from our adventures together.</p>
             </div>
-            <div class="w-5/12 mx-auto">
-                <img src="images/beach.jpg" alt="">
-            </div>
+            <x-slider.scripts>
+                @foreach($memories as $memory)
+                    <x-slider.item filename="{{$memory->getFilename()}}" />
+                @endforeach
+            </x-slider.scripts>
         </div>
-        <memory-slider :dots="false" :infinite="false" :autoplay-speed="5000">...</memory-slider>
     </section> 
 </main>
+
 
