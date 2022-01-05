@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ReservationController;
 
 
 /*
@@ -40,6 +41,9 @@ Route::get('/schedule', [ScheduleController::class, 'index'])
 Route::get('/calendar', [CalendarController::class, 'index'])
     ->name('calendar');
 
+
+Route::get('/contact', [ContactController::class, 'index'])
+    ->name('contact');
 
 // User must be authenticated with an email address of cwyrwas@gmail.com to get past this gate.
 Route::middleware(['auth', 'admin'])->group(function () {
